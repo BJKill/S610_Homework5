@@ -6,10 +6,11 @@ llr <- function(x,y,z,omega){
 }
 
 compute_f_hat <- function(z,x,y,omega){
-  Wz <- make_weight_matrix(z,x,omega)
+  Wz <- as.array(diag(make_weight_matrix(z, x, omega)), ncol = 1, nrow = length(x))
   X <- make_predictor_matrix(x)
-  f_hat = c(1,z) %*% solve(t(X) %*% Wz %*% X) %*% t(X) %*% Wz %*% y
+  f_hat <- c(1, z) %*% solve(t(X) %*% sweep(X, MARGIN = 2, Wz, "*")) %*% t(X) %*% (Wz*as.array(y, nrow = length(y), ncol = 1))
   return(f_hat)
+  print(f_hat)
 }
 
 make_predictor_matrix <- function(x){
@@ -34,4 +35,12 @@ make_weight_matrix <- function(z,x,omega){
   Wz <- diag(w)
   return(Wz)
 }
+
+n=15
+x = rnorm(n)
+y = rnorm(x + rnorm(n))
+z = seq(-1,1, length.out = 100)
+omega = 1
+llr(x,y,z,omega)
+
 
