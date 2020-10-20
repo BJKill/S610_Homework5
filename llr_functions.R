@@ -35,3 +35,9 @@ make_weight_matrix <- function(z,x,omega){
   return(Wz)
 }
 
+n <- 15
+x <- rnorm(n)
+y <- rnorm(x + rnorm(n))
+z <- seq(-1,1,length.out = 100)
+omega <- 1
+llr(x,y,z,omega)
