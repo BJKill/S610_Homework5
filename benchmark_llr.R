@@ -1,0 +1,9 @@
+library(microbenchmark)
+microbenchmark(llr)
+
+
+
+
+
+
+

@@ -4,7 +4,7 @@ install.packages("testthat")
 library(testthat)
 
 test_that("llr output has correct length", {
-  expect_equal(length(llr(x, y, z, omega = 1)), length(z)))
+  expect_equal(length(llr(x, y, z, omega = 1)), length(z))
 })
 
 test_that("make_weight_matrix works on simple cases", {
