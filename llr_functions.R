@@ -34,4 +34,3 @@ make_weight_matrix <- function(z,x,omega){
   Wz <- diag(w)
   return(Wz)
 }
-
